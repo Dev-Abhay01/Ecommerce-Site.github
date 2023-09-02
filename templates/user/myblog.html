@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block content %}
+<h2 style="text-align:center;"><u>MY BLOGS</u></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SN</th>
+      <th scope="col">Blog Category</th>
+      <th scope="col">Blog Title</th>
+      <th scope="col">Blog Description</th>
+      <th scope="col">Attachment</th>
+      <th scope="col">Blog Date</th>
+            <th scope="col">Thumbnail</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% if bdata %}
+  {% for i in  bdata %}
+    <tr>
+      <th scope="row">-></th>
+      <td>{{i.blogcategory }}</td>
+      <td>{{ i.btitle }}</td>
+      <td style="width:45%">{{ i.bdescription }}</td>
+      <td><a href="/{{i.battachment}}"><i class="fa fa-download" style="font-size:25px;color:blue;padding-left:20%;padding-top:5%"></i></a></td>
+      <td>{{ i.blogdate }}</td>
+            <td><img src="/{{i.bthumbnail}}" width="80px" height="80px"/><td>
+
+    </tr>
+  {% endfor %} {% endif %}
+  </tbody>
+</table>
+{% endblock %}
+

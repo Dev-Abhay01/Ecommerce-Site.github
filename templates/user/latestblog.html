@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block content %}
+<div class="row">
+    <div class="col-sm-9"><h4 style="text-align:center" ;><i><u>Latest Blogs</u></i></h4>
+        <div class="row">
+            {% if bdetail %}
+            {% for x in bdetail %}
+            <div class="col-sm-3 m-3"
+                 style="min-height:400px;width:300px;border:1px solid black;border-radius:11px;padding:13px;box-shadow:10px 10px 15px grey;">
+                <img src="/{{x.6}}" style="height:180px;width:270px;"/>
+                <h5 style="...">{{x.3}}</h5>
+                <p style="font-size:12px; text-align:center;">{{x.4}}</p>
+                <hr/>
+                <a href="/{{x.5}}">Download Attachment<i class="fa fa-download"></i></a>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img src="/{{x.16}}" height="50px" width="50px" style="border-radius:50%"/></div>
+                    <div class="col-sm-9">
+                        <span style="">{{x.9}}</span> / <span style="color:grey;">SOFTWARE DEVELOPER In Techpile </span>
+                    </div>
+                </div>
+                <br/>
+                <span style="font-size:12px;color:grey">Posted on :{{x.7}}</span>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-sm-3 pt-4" style="background:#ffc251;border-left:2px groove black;">
+        <h2 style="text-align:center;color:blue;"><u>CATEGORIES</u></h2>
+        {% if data %}
+        {% for x in data %}
+        <a class="p" href="/user/latestblog?id={{x.cname}}"><p class="fs-4">
+            {{x.cname}}</p></a>
+        {% endfor %} {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

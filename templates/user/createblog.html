@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block content %}
+<div class="create-blog p-5">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+         {% if R %}
+                    <div class="alert alert-primary">
+                        Blog Created Successfully..
+                    </div>
+                    {% endif%}
+        <div class="form-group">
+            <select name="category" class="form-select" required>
+                <option>Select Blog Category</option>
+                {% if category %}
+                {% for x in category %}
+                <option>{{ x.cname }}</option>
+                {% endfor %}
+                {% endif %}
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group pt-3 ">
+                    <label style="color:#396d99"><h3>Topic of Blog</h3></label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group pt-2">
+                    <label style="color:#396d99"><h4>Blog Description</h4></label>
+                    <textarea class="form-control" name="description" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label style="color:#396d99"><h5>Attached a related document File</h5></label>
+                    <input type="file" name="attachment" class="form-control-file">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label style="color:#396d99"><h5>Thumbnail of Blog</h5></label>
+                    <input type="file" name="thumbnail" class="form-control-file">
+                </div>
+            </div>
+        </div>
+        <i style="padding-left:135px;line-height:90px"> <input type="submit" value="save" class="btn fw-bold fs-5 pb-4 cb"/><a href="/user/createblog"></a></i>
+    </form>
+</div>
+{% endblock %}

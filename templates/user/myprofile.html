@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block content %}
+<title>Please Go to Image For details</title>
+<div class="wrapper">
+    <div class="profile" >
+        <div class="overlay">
+            {% if udata %}
+            {% for u in udata %}
+            <div class="about d-flex flex-column">
+                <h3>{{u.name}}</h3><h6>{{u.profession}}</h6>
+            <div class="row about-list">
+                <div class="col-md-6">
+                    <div class="media pt-3">
+                        <label>Birthday</label>
+                        <p>{{u.DOB}}</p>
+                    </div>
+                    <div class="media">
+                        <label>Gender</label>
+                        <p>{{u.gender}}</p>
+                    </div>
+                    <div class="media">
+                        <label>college/company</label>
+                        <p>{{u.working}}</p>
+                    </div>
+                    <div class="media">
+                        <label>Password</label>
+                        <p>{{u.password}}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 pt-3">
+                    <div class="media">
+                        <label>E-mail</label>
+                        <p>{{u.email}}</p>
+                    </div>
+                    <div class="media">
+                        <label>Phone</label>
+                        <p>{{u.Mobile}}</p>
+                    </div>
+                    <div class="media">
+                        <label>Profession</label>
+                        <p>{{u.profession}}</p>
+                    </div>
+                    <div class="media">
+                      <a class="btn-edit" href="/user/editprofile">Edit Profile</a>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

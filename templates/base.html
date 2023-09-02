@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+    <style>
+        .header {
+            min-height: 80px;
+            text-align: center;
+            border-top: 5px solid #ffab00;
+        }
+
+        .ic {
+            color: black;
+            border: 1px solid #ffab00;
+            height: 25px;
+            width: 25px;
+            padding-top: 3px;
+        }
+
+        .ic:hover {
+            background: #ffab00;
+            color: white;
+            transition: all ease 1s;
+            transform: rotate(360deg);
+        }
+
+        .fic {
+            color: white;
+            border: 3px solid grey;
+            height: 30px;
+            width: 25px;
+            padding-top: 3px;
+        }
+
+        .menu {
+            min-height: 45px;
+        }
+
+        #menu ul li a {
+            color: white;
+        }
+
+        #menu ul li a:hover {
+            color: #fb8c00;
+            transition: all ease .5s;
+            transform: translateY(-3px);
+            text-shadow: 0px 3px 5px;
+        }
+
+        .menuf {
+            min-height: 45px;
+        }
+
+        #menuf ul li a {
+            color: white;
+        }
+
+        #menuf ul li a:hover {
+            color: #2828ff;
+            transition: all ease .5s;
+        }
+
+        .category {
+            min-height: 145px;
+        }
+
+        .newproduct {
+            min-height: 450px;
+            background: #feaa00;
+        }
+
+        .services {
+            min-height: 500px;
+        }
+
+        .ufooter {
+            height: 280px;
+            background: #212529;
+            width: auto;
+        }
+
+        .bfooter {
+            min-height: 45px;
+            background: #212529;
+            margin-top: 1px;
+            width: auto;
+        }
+
+        .offer {
+            min-height: 285px;
+        }
+
+        .tc {
+            font-family: Consolas;
+        }
+
+        .tc:hover {
+            background: #ffab00;
+            color: white;
+            border: 1px solid;
+            transition: all ease 1s;
+            transform: translateY(-3px);
+            box-shadow: 5px 10px 18px #ffab00;
+        }
+
+        .create-blog {
+            font-family: Georgia;
+            min-height: 417px;
+            width: 500px;
+            background: rgba(255, 171, 0, .7);
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid grey;
+            box-shadow: 10px 10px 15px grey;
+            border-radius: 11px
+        }
+
+        .form-control {
+            margin-bottom: 8px;
+        }
+
+        .form-control-file {
+            width: 208px;
+            border: 1px solid;
+            border-radius: 50px;
+        }
+
+        .txta {
+            min-height: 70px;
+        }
+
+        .form-select {
+            border: 2px groove grey;
+            border-radius: 10px;
+        }
+
+        .btn {
+            height: 34px;
+            width: 40px;
+        }
+
+        .btn:hover {
+            color: grey;
+            background-color: white;
+            transition: all ease .3s;
+            transform: translateY(-3px);
+            border: 1px solid white;
+            box-shadow: 2px 3px 5px orange;
+        }
+
+        .cu {
+            height: 34px;
+            width: 90px;
+            border-radius: 10px;
+        }
+
+        .cu:hover {
+            color: #ec7600;
+            background-color: #cacaca;
+            transition: all ease .3s;
+            transform: translateY(-2px);
+            border: 1px solid white;
+            box-shadow: 2px 3px 5px orange;
+            border-radius: 10px;
+        }
+
+        .cb {
+            height: 45px;
+            width: 130px;
+            background-color: #396d99;
+            border: 1px groove #396d99;
+            border-radius: 7px;
+            color: orange;
+        }
+
+        .cb:hover {
+            background-color: grey;
+            color: white;
+            transition: all ease .5s;
+            transform: translateY(-3px);
+            border: 1px solid white;
+            box-shadow: 0px 3px 5px;
+        }
+
+        .ule {
+            color: black;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: black;
+        }
+
+        .profile {
+            position: relative;
+            width: 500px;
+            height: 350px;
+            background: url("{% static 'images/pic8.jfif' %}");
+            background-size: cover;
+            cursor: pointer;
+            border: 12px;
+            border-top-left-radius: 35px !important;
+            border-radius: 6px;
+        }
+
+        .overlay {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 1s;
+            border-top-left-radius: 35px !important;
+            border-radius: 6px
+        }
+
+        .profile:hover .overlay {
+            opacity: 1
+        }
+
+        .overlay .about {
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            top: 1%;
+            color: white;
+            flex: column
+        }
+
+        about-list {
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            top: 10%;
+            color: white;
+            flex: column
+        }
+
+        .btn-edit {
+            font-family: MV Boli;
+            background: rgba(0, 0, 0, 0.8);
+            border: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+            background-color: transparent;
+            font-size: 19px;
+        }
+
+        .btn-edit:hover {
+            background: rgba(0, 0, 0, 0.8);
+            border: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+            background-color: transparent;
+            font-family: MV Boli;
+            color: orange;
+            transition: all ease .5s;
+            transform: translateY(-3px);
+            text-shadow: 3px 4px 5px;
+        }
+
+        .img-thumbnail-profile {
+            border: 2px solid #e2e2e2;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+        }
+
+        .p {
+            color: black;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .p:hover {
+            font-style: italic;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid outer">
+        <div class="row  header bg-light">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-3 fs-2 py-2 ">
+                        <i style="font-family:Segoe Print"><b>Engg..</b></i><b
+                            style="color:#fb8c00; font-family:Segoe Print">HUB</b><i class="fa fa-fire"></i>
+                    </div>
+                    <div class="col-sm-6 fs-4 pt-3">
+                        <b style="font-family:Trebuchet MS">WELCOME TO ENGINEERING HUB</b>
+                    </div>
+                    <div class="col-sm-3 py-4">
+                        <a class="fa fa-facebook ic" href="https://www.facebook.com/abhay.chaurasia.1865/"></a>
+                        <a class="fa fa-youtube ic" href="https://www.youtube.com/channel/UCssUWC0s5yAavxgBUNd5LuQ"></a>
+                        <a class="fa fa-whatsapp ic" href="https://www.whatsapp.com/"></a>
+                        <a class="fa fa-instagram ic"
+                            href="https://instagram.com/abhay_chaurasiaoo?utm_medium=copy_link"></a>
+                        {% if request.session.user %}
+                        <img src="{% static 'images/p7.png' %}" class="img-thumbnail-profile" /><a
+                            href="/user/myprofile" class="ps-1 fs-bolder" style="font-family:Sitka Small">WELCOME</a>
+                        {% endif %}
+                        <i class="fs-bolder" style="font-family:Sitka Small; color:grey;"><u>-USER-</u></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row menu bg-dark"><!--start menu-->
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8" style="padding-left:10%;">
+                        <nav class="navbar navbar-expand-lg navbar-light" id="menu">
+                            <div class="container-fluid">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="/user/home"><i
+                                                    class="fa fa-home"></i>Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/user/myblogs">MyBlog</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/user/createblog">CreateBlog</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/user/latestblog">LatestBlog</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/user/about">AboutUs</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/user/contactus">contactus</a>
+                                        </li>
+                                        {% if request.session.user is None %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/user/signin">SignIn</a>
+                                        </li>
+                                        {% endif %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/user/signup">SignUp</a>
+                                        </li>
+                                        {% if request.session.user %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/user/logout">Logout</a>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+            <!--end menu-->
+        </div>
+
+        {% block content %}
+        {% endblock %}
+        <div class="row ufooter">
+            <div class="col-sm-3 text-center p-5">
+                <img src="{% static 'images/pic22.png' %}" style="height:90px;" class="img-thumbnail m-2" />
+                <img src="{% static 'images/p8.jpg' %}" style="height:90px;" class="img-thumbnail m-2" />
+            </div>
+            <div class="col-sm-3 text-center p-5" id="menuf">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <div class="text-light fs-4">Ouick Links</div>
+                        <a class="nav-link active" href="/user/home"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/createblog">CreateBlog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/latestblog">LatestBlog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/about">AboutUs</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-3 text-center p-5">
+                <div class="text-light fs-4">Contact Us</div>
+                <div class="text-light pt-1">Mob.No-9140656170</div>
+                <div class="text-light">Address-Lucknow</div>
+                <div class="text-light pt-2">Email-abhaychaurasia7068@gmail.com</div>
+                <div class="text-light pt-1">Major-Web Development</div>
+            </div>
+            <div class="col-sm-3 text-center p-5">
+                <div class="text-light">Follow Us</div>
+                <div class="row">
+                    <div class="col-sm-12 py-4">
+                        <a class="fa fa-facebook fic" href="https://www.facebook.com/abhay.chaurasia.1865/"></a>
+                        <a class="fa fa-youtube fic"
+                            href="https://www.youtube.com/channel/UCssUWC0s5yAavxgBUNd5LuQ"></a>
+                        <a class="fa fa-whatsapp fic" href="https://www.whatsapp.com/"></a>
+                        <a class="fa fa-instagram fic"
+                            href="https://instagram.com/abhay_chaurasiaoo?utm_medium=copy_link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bfooter text-light text-center py-2">
+            <div class="col-sm-6">Developed By : Mr.Abhay <i class="fa fa-user-o"></i></div>
+            <div class="col-sm-6">&copy:Engg..Hub India's Blogging Site.</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // Inline JavaScript to disable context menu
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
